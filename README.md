@@ -35,6 +35,7 @@ The Electricity Bill Management System provides numerous benefits for both the u
 - Email
 - Phone
 - AccountNumber
+
 **Meter**
 - MeterID (Primary Key)
 - MeterNumber
@@ -43,20 +44,24 @@ The Electricity Bill Management System provides numerous benefits for both the u
 - LastReadingDate
 - LastReadingValue
 - CustomerID (Foreign Key referencing Customer.CustomerID)
+
 **BillingRate**
 - RateID (Primary Key)
 - RateType
 - RateDescription
 - UnitPrice
+
 **BillingCycle**
 - CycleID (Primary Key)
 - CycleStartDate
 - CycleEndDate
+
 **MeterReading**
 - ReadingID (Primary Key)
 - MeterID (Foreign Key referencing Meter.MeterID)
 - ReadingValue
 - ReadingDateTime
+
 **Bill**
 - BillID (Primary Key)
 - CustomerID (Foreign Key referencing Customer.CustomerID)
@@ -65,15 +70,18 @@ The Electricity Bill Management System provides numerous benefits for both the u
 - TotalAmount
 - PaymentStatus
 - DueDate
+
 **Payment**
 - PaymentID (Primary Key)
 - BillID (Foreign Key referencing Bill.BillID)
 - PaymentAmount
 - PaymentDate
+
 **AdminUser**
 - UserID (Primary Key)
 - Username
 - Password
+
 Note: The schema includes the main entities and their attributes for the Electricity Bill Management System. Additional entities and attributes can be added based on specific requirements and business rules. The relationships between entities are as follows:
 1. One Customer can have multiple Meters (One-to-Many relationship).
 2. Each Meter is associated with one Customer (Many-to-One relationship).
