@@ -83,11 +83,13 @@ The Electricity Bill Management System provides numerous benefits for both the u
 - Password
 
 Note: The schema includes the main entities and their attributes for the Electricity Bill Management System. Additional entities and attributes can be added based on specific requirements and business rules. The relationships between entities are as follows:
+
 1. One Customer can have multiple Meters (One-to-Many relationship).
 2. Each Meter is associated with one Customer (Many-to-One relationship).
 3. Each MeterReading is linked to one Meter (Many-to-One relationship).
 4. Each Bill is generated for one Customer and belongs to one BillingCycle (Many-to-One relationship).
 5. Each Payment is associated with one Bill (Many-to-One relationship).
+
 These entities and their relationships form the foundation for storing and managing the data related to customers, meters, meter readings, billing rates, billing cycles, bills, and payments within the Electricity Bill Management System.
 
 # Assumptions and Business Rules
