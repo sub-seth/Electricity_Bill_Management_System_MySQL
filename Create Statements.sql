@@ -1,0 +1,70 @@
+CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Address VARCHAR(100) NOT NULL,
+    City VARCHAR(50) NOT NULL,
+    State VARCHAR(50) NOT NULL,
+    ZIPCode VARCHAR(10) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone VARCHAR(20) NOT NULL,
+    AccountNumber VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Meter (
+    MeterID INT PRIMARY KEY AUTO_INCREMENT,
+    MeterNumber VARCHAR(50) NOT NULL,
+    MeterType VARCHAR(50) NOT NULL,
+    InstallationDate DATE NOT NULL,
+    LastReadingDate DATE NOT NULL,
+    LastReadingValue DECIMAL(10,2) NOT NULL,
+    CustomerID INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+
+CREATE TABLE BillingRate (
+    RateID INT PRIMARY KEY AUTO_INCREMENT,
+    RateType VARCHAR(50) NOT NULL,
+    RateDescription VARCHAR(100) NOT NULL,
+    UnitPrice DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE BillingCycle (
+    CycleID INT PRIMARY KEY AUTO_INCREMENT,
+    CycleStartDate DATE NOT NULL,
+    CycleEndDate DATE NOT NULL
+);
+
+CREATE TABLE MeterReading (
+    ReadingID INT PRIMARY KEY AUTO_INCREMENT,
+    MeterID INT NOT NULL,
+    ReadingValue DECIMAL(10,2) NOT NULL,
+    ReadingDateTime DATETIME NOT NULL,
+    FOREIGN KEY (MeterID) REFERENCES Meter(MeterID)
+);
+
+CREATE TABLE Bill (
+    BillID INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID INT NOT NULL,
+    CycleID INT NOT NULL,
+    TotalConsumption DECIMAL(10,2) NOT NULL,
+    TotalAmount DECIMAL(10,2) NOT NULL,
+    PaymentStatus VARCHAR(50) NOT NULL,
+    DueDate DATE NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
+    FOREIGN KEY (CycleID) REFERENCES BillingCycle(CycleID)
+);
+
+CREATE TABLE Payment (
+    PaymentID INT PRIMARY KEY AUTO_INCREMENT,
+    BillID INT NOT NULL,
+    PaymentAmount DECIMAL(10,2) NOT NULL,
+    PaymentDate DATE NOT NULL,
+    FOREIGN KEY (BillID) REFERENCES Bill(BillID)
+);
+
+CREATE TABLE AdminUser (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Username VARCHAR(50) NOT NULL,
+    Password VARCHAR(50) NOT NULL
+);
