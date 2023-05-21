@@ -99,6 +99,7 @@ These entities and their relationships form the foundation for storing and manag
 3. Meter readings are recorded periodically at fixed intervals (e.g., monthly) or as per utility company policies.
 4. Customers are responsible for ensuring the accuracy of meter readings and reporting any discrepancies to the utility company.
 5. The system will generate bills based on the actual meter readings and the applicable billing rates for the corresponding billing cycle.
+
 **Business Rules**
 1. Customers must provide accurate and up-to-date information such as name, address, contact details, and account number during registration.
 2. Meter readings must be recorded accurately and in a timely manner.
@@ -110,43 +111,46 @@ These entities and their relationships form the foundation for storing and manag
 8. Only authorized administrators should have access to the system with valid login credentials.
 9. The system should enforce data integrity and security measures to protect customer information and ensure privacy.
 10. The system should generate accurate reports and analytics to assist administrators in decision-making and planning.
+
 These assumptions and business rules serve as guidelines for the development and implementation of the Electricity Bill Management System. They help ensure the accuracy, efficiency, and compliance of the system with the utility company's operational processes and policies.
 
 # Final Normalized Schema with Justification
 Based on the entities and their attributes mentioned earlier, here is the final normalized schema for the Electricity Bill Management System:
 1. Customer (CustomerID, FirstName, LastName, Address, City, State, ZIPCode, Email, Phone, AccountNumber)
-    CustomerID: Primary key uniquely identifying each customer.
-    AccountNumber: Unique identifier for the customer's account.
+- CustomerID: Primary key uniquely identifying each customer.
+- AccountNumber: Unique identifier for the customer's account.
 2. Meter (MeterID, MeterNumber, MeterType, InstallationDate, LastReadingDate, LastReadingValue, CustomerID)
-    MeterID: Primary key uniquely identifying each meter.
-    CustomerID: Foreign key referencing the Customer table, establishing a relationship between Customer and Meter entities.
+- MeterID: Primary key uniquely identifying each meter.
+- CustomerID: Foreign key referencing the Customer table, establishing a relationship between Customer and Meter entities.
 3. BillingRate (RateID, RateType, RateDescription, UnitPrice)
-    RateID: Primary key uniquely identifying each billing rate.
+- RateID: Primary key uniquely identifying each billing rate.
 4. BillingCycle (CycleID, CycleStartDate, CycleEndDate)
-    CycleID: Primary key uniquely identifying each billing cycle.  
+- CycleID: Primary key uniquely identifying each billing cycle.  
 5. MeterReading (ReadingID, MeterID, ReadingValue, ReadingDateTime)
-    ReadingID: Primary key uniquely identifying each meter reading.
-    MeterID: Foreign key referencing the Meter table, establishing a relationship between Meter and MeterReading entities.
+- ReadingID: Primary key uniquely identifying each meter reading.
+- MeterID: Foreign key referencing the Meter table, establishing a relationship between Meter and MeterReading entities.
 6. Bill (BillID, CustomerID, CycleID, TotalConsumption, TotalAmount, PaymentStatus, DueDate)
-    BillID: Primary key uniquely identifying each bill.
-    CustomerID: Foreign key referencing the Customer table, establishing a relationship between Customer and Bill entities.
-    CycleID: Foreign key referencing the BillingCycle table, establishing a relationship between BillingCycle and Bill entities.
+- BillID: Primary key uniquely identifying each bill.
+- CustomerID: Foreign key referencing the Customer table, establishing a relationship between Customer and Bill entities.
+- CycleID: Foreign key referencing the BillingCycle table, establishing a relationship between BillingCycle and Bill entities.
 7. Payment (PaymentID, BillID, PaymentAmount, PaymentDate)
-    PaymentID: Primary key uniquely identifying each payment.
-    BillID: Foreign key referencing the Bill table, establishing a relationship between Bill and Payment entities.
+- PaymentID: Primary key uniquely identifying each payment.
+- BillID: Foreign key referencing the Bill table, establishing a relationship between Bill and Payment entities.
 8. AdminUser (UserID, Username, Password)
-    UserID: Primary key uniquely identifying each admin user.
+- UserID: Primary key uniquely identifying each admin user.
+
 **Justification for Normalization**
 The final normalized schema follows best practices of database normalization to eliminate redundancy, ensure data integrity, and optimize data storage and retrieval. Here's the justification for the normalization:
 1. Customer, Meter, and AdminUser entities are in 1st Normal Form (1NF):
-    Each attribute contains atomic values.
-    Primary keys are defined for each entity.
+- Each attribute contains atomic values.
+- Primary keys are defined for each entity.
 2. Meter, BillingRate, BillingCycle, and AdminUser entities are in 2nd Normal Form (2NF):
-    There are no partial dependencies within the entities.
-    All non-key attributes depend on the entire primary key.
+- There are no partial dependencies within the entities.
+- All non-key attributes depend on the entire primary key.
 3. MeterReading entity is in 3rd Normal Form (3NF):
-    The ReadingValue and ReadingDateTime depend solely on the ReadingID, which is the primary key.
+- The ReadingValue and ReadingDateTime depend solely on the ReadingID, which is the primary key.
 4. Bill and Payment entities are in 3NF:
-    The TotalConsumption and TotalAmount in the Bill entity are calculated values based on meter readings and billing rates.
-    PaymentAmount and PaymentDate in the Payment entity are specific to each payment transaction.
+- The TotalConsumption and TotalAmount in the Bill entity are calculated values based on meter readings and billing rates.
+- PaymentAmount and PaymentDate in the Payment entity are specific to each payment transaction.
+
 By achieving normalization, the schema avoids data duplication, minimizes update anomalies, and supports efficient data retrieval and manipulation operations. It promotes data consistency, accuracy, and scalability within the Electricity Bill Management System.
