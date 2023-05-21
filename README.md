@@ -140,6 +140,7 @@ Based on the entities and their attributes mentioned earlier, here is the final 
 - UserID: Primary key uniquely identifying each admin user.
 
 **Justification for Normalization**
+
 The final normalized schema follows best practices of database normalization to eliminate redundancy, ensure data integrity, and optimize data storage and retrieval. Here's the justification for the normalization:
 1. Customer, Meter, and AdminUser entities are in 1st Normal Form (1NF):
 - Each attribute contains atomic values.
