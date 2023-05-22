@@ -11,7 +11,8 @@ Key Features of the Electricity Bill Management System:
 4. Billing Generation: The system will automate the process of generating electricity bills based on the meter readings and billing rates. It will calculate the consumption, apply the appropriate rates, and generate detailed bills for each customer.
 5. Billing Payment Management: The system will provide functionality for customers to view and pay their bills online. It will integrate with payment gateways to facilitate secure online transactions. Customers will be able to view their billing history, payment status, and download bills.
 6. Reports and Analytics: The system will offer various reports and analytics to help administrators gain insights into customer consumption patterns, revenue trends, and outstanding payments. This will assist in decision-making and planning for the utility company.
-The Electricity Bill Management System will bring efficiency, accuracy, and convenience to the billing process, reducing manual errors, streamlining operations, and improving customer satisfaction. By automating tasks and providing comprehensive features, the system will enhance the overall management of electricity billing for the utility company.
+
+> The Electricity Bill Management System will bring efficiency, accuracy, and convenience to the billing process, reducing manual errors, streamlining operations, and improving customer satisfaction. By automating tasks and providing comprehensive features, the system will enhance the overall management of electricity billing for the utility company.
 
 ## Business Case
 The Electricity Bill Management System provides numerous benefits for both the utility company and its customers. Here are the key reasons why implementing this system is advantageous:
