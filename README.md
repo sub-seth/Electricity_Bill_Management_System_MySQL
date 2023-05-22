@@ -118,8 +118,8 @@ These entities and their relationships form the foundation for storing and manag
 ## Final Normalized Schema with Justification
 Based on the entities and their attributes mentioned earlier, here is the final normalized schema for the Electricity Bill Management System:
 1. Customer (CustomerID, FirstName, LastName, Address, City, State, ZIPCode, Email, Phone, AccountNumber)
-- CustomerID: Primary key uniquely identifying each customer.
-- AccountNumber: Unique identifier for the customer's account.
+ - CustomerID: Primary key uniquely identifying each customer.
+ - AccountNumber: Unique identifier for the customer's account.
 2. Meter (MeterID, MeterNumber, MeterType, InstallationDate, LastReadingDate, LastReadingValue, CustomerID)
 - MeterID: Primary key uniquely identifying each meter.
 - CustomerID: Foreign key referencing the Customer table, establishing a relationship between Customer and Meter entities.
